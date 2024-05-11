@@ -12,7 +12,7 @@ body {
   object-fit: cover;
   background-position: center;
   background-radial-gradient: #4c0c0c;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: cover;
   overflow: hidden;
   /* background-attachment: fixed; */
