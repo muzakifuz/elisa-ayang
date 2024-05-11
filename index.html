@@ -94,25 +94,25 @@
         let randomY = randomNumber(0, window.screen.height);
 
         heartAuto(randomX, randomY);
-      }, 100);
+      }, 300);
 
       function randomNumber(min = 0, max) {
         return Math.random() * (max - min) + min;
       }
 
-      setTimeout(() => {
-        // document.querySelector("#music").autoplay();
+      // setTimeout(() => {
+      //   // document.querySelector("#music").autoplay();
 
-        document.addEventListener("load", () => {
-          const audio = document.getElementById("music");
-          // audio.trigger("load");
-          // audio.muted = true;
+      //   document.addEventListener("load", () => {
+      //     const audio = document.getElementById("music");
+      //     // audio.trigger("load");
+      //     // audio.muted = true;
 
-          audio.play();
-        });
-        // var audio = new Audio("music.mp3");
-        // audio.play();
-      }, 1000);
+      //     audio.play();
+      //   });
+      //   // var audio = new Audio("music.mp3");
+      //   // audio.play();
+      // }, 1000);
 
       document.addEventListener("mousemove", heart);
     </script>
