@@ -5,7 +5,8 @@
 }
 
 body {
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   /* background: radial-gradient(#4c0c0c, #250707); */
   background-opacity: 70%;
   background: url("./elisa.jpeg");
