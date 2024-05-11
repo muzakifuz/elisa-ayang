@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio id="music" autoplay controls preload="none">
+      <source src="music.3gp" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      let previousMouseX = null;
+      let previousMouseY = null;
+
+      // append Element with distance of 100px
+      function heart(event) {
+        if (previousMouseX !== null && previousMouseY !== null) {
+          let deltaX = event.pageX - previousMouseX;
+          let deltaY = event.pageY - previousMouseY;
+
+          let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+          if (distance >= 100) {
+            createHeart(event.pageX, event.pageY);
+            previousMouseX = event.pageX;
+            previousMouseY = event.pageY;
+          }
+        } else {
+          createHeart(event.pageX, event.pageY);
+          previousMouseX = event.pageX;
+          previousMouseY = event.pageY;
+        }
+      }
+      function createHeart() {
+        let i = document.createElement("i");
+        document.body.appendChild(i);
+        i.style.top = event.pageY + "px";
+        i.style.left = event.pageX + "px";
+        i.style.scale = Math.random() * 2 + 1;
+
+        // random propert
+        console.log(getRandomProperty());
+        i.style.setProperty("--x", getRandomProperty());
+        i.style.setProperty("--y", getRandomProperty());
+
+        setTimeout(() => {
+          document.body.removeChild(i);
+        }, 2000);
+      }
+      function heartAuto(eventX, eventY) {
+        if (previousMouseX !== null && previousMouseY !== null) {
+          let deltaX = eventX - previousMouseX;
+          let deltaY = eventY - previousMouseY;
+
+          let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+          if (distance >= 100) {
+            createHeartAuto(eventX, eventY);
+            previousMouseX = eventX;
+            previousMouseY = eventY;
+          }
+        } else {
+          createHeartAuto(eventX, eventY);
+          previousMouseX = eventX;
+          previousMouseY = eventY;
+        }
+      }
+      function createHeartAuto(eventX, eventY) {
+        let i = document.createElement("i");
+        document.body.appendChild(i);
+        i.style.top = eventY + "px";
+        i.style.left = eventX + "px";
+        i.style.scale = Math.random() * 2 + 1;
+
+        // random propert
+        // console.log(getRandomProperty());
+        i.style.setProperty("--x", getRandomProperty());
+        i.style.setProperty("--y", getRandomProperty());
+
+        setTimeout(() => {
+          document.body.removeChild(i);
+        }, 2000);
+      }
+
+      function getRandomProperty() {
+        return `${Math.random() * 400 - 200}px`;
+      }
+
+      setInterval(() => {
+        let randomX = randomNumber(0, window.screen.width);
+        let randomY = randomNumber(0, window.screen.height);
+
+        heartAuto(randomX, randomY);
+      }, 100);
+
+      function randomNumber(min = 0, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      setTimeout(() => {
+        // document.querySelector("#music").autoplay();
+
+        document.addEventListener("load", () => {
+          const audio = document.getElementById("music");
+          // audio.trigger("load");
+          // audio.muted = true;
+
+          audio.play();
+        });
+        // var audio = new Audio("music.mp3");
+        // audio.play();
+      }, 1000);
+
+      document.addEventListener("mousemove", heart);
+    </script>
+  </body>
+</html>
